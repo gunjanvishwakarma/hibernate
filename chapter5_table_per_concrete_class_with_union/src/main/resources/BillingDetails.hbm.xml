@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan"
+>
+    <class name="BillingDetails" table="BILLING_DETAILS" abstract="true">
+        <id name="id" type="long" column="BILLING_DETAILS_ID">
+            <generator class="hilo"/>
+        </id>
+        <property name="owner" column="OWNER" type="string"/>
+        <union-subclass name="CreditCard" table="CREDIT_CARD">
+            <property name="number" type="string" column="NUMBER"
+                      length="16"/>
+            <property name="expMonth" type="string" column="EXP_MONTH"
+                      length="2"/>
+            <property name="expYear" type="string" column="EXP_YEAR"
+                      length="4"/>
+        </union-subclass>
+        <union-subclass name="BankAccount" table="BANK_ACCOUNT">
+            <property name="account" type="string" column="ACCOUNT"
+                      length="16"/>
+            <property name="bankname" type="string" column="BANKNAME"
+                      length="255"/>
+            <property name="swift" type="string" column="SWIFT" length="15"/>
+        </union-subclass>
+    </class>
+</hibernate-mapping>

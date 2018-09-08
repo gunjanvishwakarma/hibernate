@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan"
+                   default-access="field">
+    <class name="BillingDetails" table="BILLING_DETAILS" abstract="true">
+        <id name="id" type="long" column="BILLING_DETAILS_ID">
+            <generator class="native"/>
+        </id>
+        <discriminator column="BILLING_DETAILS_TYPE" type="string"/>
+        <property name="owner" column="OWNER" type="string" not-null="true"/>
+        <subclass name="CreditCard" discriminator-value="CC">
+            <property name="number" type="string" column="CC_NUMBER"
+                      length="16" update="false" not-null="false"/>
+            <property name="expMonth" type="string" column="CC_EXP_MONTH"
+                      length="2" update="false" not-null="false"/>
+            <property name="expYear" type="string" column="CC_EXP_YEAR"
+                      length="4" update="false" not-null="false"/>
+        </subclass>
+        <subclass name="BankAccount" discriminator-value="BA">
+            <property name="account" type="string" column="BA_ACCOUNT"
+                      length="16" not-null="false"/>
+            <property name="bankname" type="string" column="BA_BANKNAME"
+                      length="255" not-null="false"/>
+            <property name="swift" type="string" column="BA_SWIFT"
+                      length="15" not-null="false"/>
+        </subclass>
+    </class>
+</hibernate-mapping>

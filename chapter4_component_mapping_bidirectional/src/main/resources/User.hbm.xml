@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+
+<hibernate-mapping package="com.gunjan">
+
+    <class name="User" table="USER">
+
+        <!-- Common id property. -->
+        <id name="id" type="long" column="USER_ID">
+            <generator class="native"/>
+        </id>
+
+        <property name="name">
+            <column name="NAME"/>
+        </property>
+
+        <component name="homeAddress" class="Address">
+            <parent name="user"/> <!-- for bidirectional component mapping -->
+            <property name="street" type="string" column="HOME_STREET"
+                      not-null="true"/>
+            <property name="zipcode" type="string" column="HOME_ZIPCODE"
+                      not-null="true"/>
+            <property name="city" type="string" column="HOME_CITY"
+                      not-null="true"/>
+        </component>
+
+        <component name="billingAddress" class="Address">
+            <parent name="user"/> <!-- for bidirectional component mapping Address.getUser() act as back pointer
+				you can navigate from address to user -->
+            <property name="street" type="string" column="BILLING_STREET"
+                      not-null="true"/>
+            <property name="zipcode" type="string" column="BILLING_ZIPCODE"
+                      not-null="true"/>
+            <property name="city" type="string" column="BILLING_CITY"
+                      not-null="true"/>
+        </component>
+
+    </class>
+
+</hibernate-mapping>

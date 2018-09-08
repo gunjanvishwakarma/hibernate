@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan"
+                   default-access="field">
+    <class name="CreditCard" table="CREDIT_CARD" abstract="true">
+        <id name="id" type="long" column="CREDIT_CARD_ID">
+            <generator class="native"/>
+        </id>
+        <property name="owner" column="OWNER" type="string" not-null="true"/>
+        <property name="number" type="string" column="NUMBER" length="16"
+                  not-null="true"/>
+        <property name="expMonth" type="string" column="EXP_MONTH"
+                  length="2" update="false" not-null="true"/>
+        <property name="expYear" type="string" column="EXP_YEAR"
+                  length="4" update="false" not-null="true"/>
+    </class>
+</hibernate-mapping>

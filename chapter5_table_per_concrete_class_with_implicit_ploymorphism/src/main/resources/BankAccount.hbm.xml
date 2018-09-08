@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan"
+                   default-access="field">
+    <class name="BankAccount" table="BANK_ACCOUNT" abstract="true">
+        <id name="id" type="long" column="BANK_ACCOUNT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="owner" column="OWNER" type="string" not-null="true"/>
+        <property name="account" type="string" column="ACCOUNT"
+                  length="16" not-null="true"/>
+        <property name="bankname" type="string" column="BANKNAME"
+                  length="255" not-null="true"/>
+        <property name="swift" type="string" column="SWIFT" length="15"
+                  not-null="true"/>
+    </class>
+</hibernate-mapping>
