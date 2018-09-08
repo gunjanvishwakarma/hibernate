@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+<hibernate-mapping package="com.gunjan">
+    <class name="Bid" table="BID">
+        <id name="id" type="long" column="BID_ID">
+            <generator class="native"/>
+        </id>
+        <property name="price">
+            <column name="AMOUNT"/>
+        </property>
+        <many-to-one name="item" class="Item" column="ITEM_ID" update="false" insert="false"
+        />
+    </class>
+</hibernate-mapping>

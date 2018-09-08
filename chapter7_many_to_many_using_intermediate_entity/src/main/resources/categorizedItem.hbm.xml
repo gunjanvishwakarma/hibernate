@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.gunjan">
+    <class name="CategorizedItem" table="CATEGORIZED_ITEM" mutable="false">
+        <composite-id name="id" class="CategorizedItem$Id">
+            <key-property name="categoryId" access="field" column="CATEGORY_ID"></key-property>
+            <key-property name="itemId" access="field" column="ITEM_ID"></key-property>
+        </composite-id>
+        <property name="dateAdded" column="ADDED_ON" type="timestamp"></property>
+        <property name="username" column="ADDED_BY_USER" type="string"
+                  not-null="true"/>
+        <many-to-one name="category" column="CATEGORY_ID"
+                     not-null="true" insert="false" update="false"></many-to-one>
+        <many-to-one name="item" column="ITEM_ID" not-null="true"
+                     insert="false" update="false"></many-to-one>
+    </class>
+</hibernate-mapping>

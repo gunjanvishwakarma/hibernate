@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+
+<hibernate-mapping package="com.gunjan">
+
+    <class name="Item" table="ITEM">
+
+        <!-- Common id property. -->
+        <id name="id" type="long" column="ITEM_ID">
+            <generator class="native"/>
+        </id>
+
+        <property name="name">
+            <column name="NAME"/>
+        </property>
+
+
+        <!--<set name="bids" cascade="all" inverse="true"> inverse="true" cascade="save-update"
+            <key column = "ITEM_ID"/> <one-to-many class="Bid"/> </set> -->
+        <bag name="bids" cascade="all" inverse="true">
+            <key column="ITEM_ID"/>
+            <one-to-many class="Bid"/>
+        </bag>
+        <!-- if u compare this with the collection mapping, you see that you map
+            the content of the collection with a different element,<one-to-many>.this
+            indicates that collection contains not value type instances ITEM_ID is the
+            foreign key from the BID table -->
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.gunjan">
+
+    <class name="Address" table="ADDRESS">
+
+        <id name="id" type="long" column="ADDRESS_ID">
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
+        </id>
+
+        <property name="street">
+            <column name="STREET"/>
+        </property>
+        <property name="zipcode">
+            <column name="ZIPCODE"/>
+        </property>
+        <property name="city">
+            <column name="CITY"/>
+        </property>
+
+        <one-to-one name="user" class="User" constrained="true"/>
+
+    </class>
+
+</hibernate-mapping>

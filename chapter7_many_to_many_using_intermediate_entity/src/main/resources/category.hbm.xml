@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.gunjan">
+    <class name="Category" table="CATEGORY">
+        <id name="id" type="long" column="CATEGORY_ID">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="NAME"/>
+        <set name="categorizedItems" inverse="true">
+            <key column="ITEM_ID"/>
+            <one-to-many class="CategorizedItem"/>
+        </set>
+    </class>
+</hibernate-mapping>

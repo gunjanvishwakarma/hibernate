@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.gunjan">
+    <class name="Item" table="ITEM">
+        <id name="id" type="long" column="ITEM_ID">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="NAME"/>
+        <set name="categories" table="CATEGORY_ITEM" cascade="save-update">
+            <key column="ITEM_ID"/>
+            <many-to-many class="Category" column="CATEGORY_ID"/>
+        </set>
+    </class>
+</hibernate-mapping>

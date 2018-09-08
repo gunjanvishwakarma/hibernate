@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.gunjan">
+
+    <class name="User" table="USER">
+
+        <!-- Common id property. -->
+        <id name="id" type="long" column="USER_ID">
+            <generator class="increment"/>
+        </id>
+
+        <property name="name">
+            <column name="NAME"/>
+        </property>
+
+        <many-to-one name="shippingAddress" class="Address" not-null="true" cascade="all"
+                     column="SHIPPING_ADDRESS_ID" unique="true"/>
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan">
+    <class name="Shipment" table="SHIPMENT">
+        <id name="id" column="SHIPMENT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="state" type="string" column="STATE"/>
+
+        <join table="ITEM_SHIPMENT" optional="true">
+            <key column="SHIPMENT_ID"></key>
+            <many-to-one name="item" column="ITEM_ID" not-null="true"
+                         unique="true"></many-to-one>
+        </join>
+    </class>
+</hibernate-mapping>
