@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan">
+    <class name="User" table="USER" dynamic-insert="true" dynamic-update="true">
+        <id name="id" type="long" column="USER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="lastName" column="LAST_NAME" type="string"/>
+        <property name="userName" column="USER_NAME" type="string"/>
+        <property name="password" column="PASSWORD" type="string"/>
+        <property name="email" column="EMAIL" type="string"/>
+        <property name="rank" column="RANK" type="integer"/>
+        <property name="isAdmin" column="IS_ADMIN" type="boolean"/>
+        <property name="homeStreet" column="HOME_STREET" type="string"/>
+        <property name="homeZipCode" column="HOME_ZIPCODE" type="string"/>
+        <property name="dateCreated" column="DATE_CREATED" type="date"/>
+    </class>
+</hibernate-mapping>

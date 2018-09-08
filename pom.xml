@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gunjan</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>hibernate_util</module>
+        <module>chapter2</module>
+        <module>chapter4_component_mapping_unidirectional</module>
+        <module>chapter4_component_mapping_bidirectional</module>
+        <module>chapter5_table_per_class_hierarchy</module>
+        <module>chapter5_table_per_concrete_class_with_implicit_ploymorphism</module>
+        <module>chapter5_table_per_concrete_class_with_union</module>
+        <module>chapter5_table_per_sub_class</module>
+        <module>chapter6_bi_directional_association_1</module>
+        <module>chapter6_bidirectional_bid_to_item_mappings</module>
+        <module>chapter6_collection_of_component</module>
+        <module>chapter6_mapping_an_identifier_bag</module>
+        <module>chapter6_mapping_list</module>
+        <module>chapter6_mapping_map</module>
+        <module>chapter6_mapping_set</module>
+        <module>chapter6_uni_directional_association_1</module>
+        <module>chapter6_uni_directional_association_2</module>
+        <module>chapter6_unidirectional_bid_to_item_mapping</module>
+        <module>chapter7_bidirection_many_to_many_association</module>
+        <module>chapter7_many_to_many_join_table_as_collection_of_components</module>
+        <module>chapter7_many_to_many_using_intermediate_entity</module>
+        <module>chapter7_one_to_many_using_join_table</module>
+        <module>chapter7_one_to_one_foreign_key_association</module>
+        <module>chapter7_one_to_one_foreign_key_association_bi_directional</module>
+        <module>chapter7_one_to_one_using_join_table</module>
+        <module>chapter7_one_to_one_using_shared_primary_key</module>
+        <module>chapter7_one_to_many_using_bag</module>
+        <module>chapter7_one_to_many_using_list</module>
+        <module>chapter7_singlevalued_entity_association</module>
+        <module>chapter7_unidirection_many_to_many_association</module>
+        <module>chapter9</module>
+        <module>chapter12_category_association_to_itself</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>demo</name>
+    <description>Demo project for Spring Boot</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.0.BUILD-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+</project>

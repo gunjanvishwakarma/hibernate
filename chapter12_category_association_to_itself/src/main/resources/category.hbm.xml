@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.gunjan">
+    <class name="Category" table="CATEGORY">
+        <id name="id" type="long" column="CATEGORY_ID">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="NAME"/>
+
+        <!-- cascade="save-update" saving child category will save parent category -->
+        <many-to-one name="parentCategory" class="Category"
+                     column="PARENT_CATEGORY_ID" cascade="none"></many-to-one>
+
+        <!-- cascade="save-update" saving parent category will save child category -->
+        <!-- saving child category with out saving parent category will through
+            foreign key voilation -->
+        <set name="childCategories" table="CATEGORY" cascade="save-update"
+             inverse="true">
+            <key column="PARENT_CATEGORY_ID"/>
+            <one-to-many class="Category"/>
+        </set>
+    </class>
+</hibernate-mapping>
