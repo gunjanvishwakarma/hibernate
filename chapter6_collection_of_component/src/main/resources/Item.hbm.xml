@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+    <class name="com.gunjan.Item" table="ITEM_C_F_C">
+        <id name="id" column="ITEM_ID">
+            <generator class="increment"/>
+        </id>
+        <property name="name" column="ITEM_NAME"/>
+        <set name="images" table="ITEM_IMAGE_C_F_C" order-by="IMAGENAME">
+            <key column="ITEM_ID"/>
+            <composite-element class="com.gunjan.Image">
+                <property name="imageName" column="IMAGENAME" not-null="true"/>
+                <property name="fileName" column="FILENAME" not-null="true"/>
+                <property name="sizeX" column="SIZEX" not-null="true"/>
+                <property name="sizeY" column="SIZEY" not-null="true"/>
+            </composite-element>
+        </set>
+
+    </class>
+</hibernate-mapping>

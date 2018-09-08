@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan"
+                   default-access="field">
+    <class name="Item" table="ITEM">
+        <id name="id" type="long" column="ITEM_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="ITEM_NAME" type="string"
+                  not-null="true"/>
+        <map name="images" table="ITEM_IMAGE">
+            <key column="ITEM_ID"/>
+            <map-key column="IMAGENAME" type="string"/>
+            <element type="string" column="FILE_NAME" not-null="true"/>
+        </map>
+    </class>
+</hibernate-mapping>

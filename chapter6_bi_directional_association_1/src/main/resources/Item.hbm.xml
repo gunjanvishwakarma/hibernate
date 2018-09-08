@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan">
+    <class name="Item" table="ITEM">
+        <id name="id" column="ITEM_ID">
+            <generator class="increment"/>
+        </id>
+        <property name="name" column="NAME"/>
+        <!-- <set name="bids">
+            <key column="ITEM_ID"></key>
+            <one-to-many class="Bid" />
+        </set> -->
+
+        <!-- here inverse is true, so this will avoid the duplicate update of ITEM_ID
+            foreign key -->
+        <!-- <set name="bids" inverse="true"> <key column="ITEM_ID"></key> <one-to-many
+            class="Bid" /> </set> -->
+
+
+        <!-- cascade option offers transitive persistence and deletion, a feature you can enable
+            to save lines of code and to let hibernate manage the life cycle of associated
+            entity instance automatically -->
+
+        <set name="bids" cascade="save-update, delete" inverse="true">
+            <key column="ITEM_ID"></key>
+            <one-to-many class="Bid"/>
+        </set>
+    </class>
+</hibernate-mapping>

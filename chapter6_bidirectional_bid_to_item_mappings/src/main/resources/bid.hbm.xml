@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+
+<hibernate-mapping package="com.gunjan">
+
+    <class name="Bid" table="BID">
+
+        <!-- Common id property. -->
+        <id name="id" type="long" column="BID_ID">
+            <generator class="native"/>
+        </id>
+
+        <property name="price">
+            <column name="AMOUNT"/>
+        </property>
+
+
+        <!-- The other side of this bidirectional many-to-one association to item. -->
+        <many-to-one
+                name="item"
+                class="Item"
+                column="ITEM_ID"
+                cascade="all"
+                not-null="true"
+        />
+        <!-- not-null="true" if bid is there than there must be an item
+        cascade all="all" if we save Bid it will automatically save item also
+         -->
+        <!--
+        column ITEM_ID  in the BIT table is a foreign to the primary key of Item table
+        this mapping is called a unidirectional many-to-one mapping actually because it
+        is unidirectional, you don't know what on other side, and you could just as
+        well call this mapping a unidirectional to-one mapping. you name the class Item,
+        which is the target of association, explicitly.this is usually optional ,
+        because hibernate can determine the target type with reflection on the java
+        property. you added not-null attribute because you can't have a bid without
+        an item
+        -->
+
+    </class>
+
+</hibernate-mapping>

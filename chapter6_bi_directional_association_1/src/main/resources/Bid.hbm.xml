@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.gunjan">
+
+    <class name="Bid" table="BID">
+
+        <id name="id" type="long" column="BID_ID">
+            <generator class="native"/>
+        </id>
+
+        <property name="price">
+            <column name="AMOUNT"/>
+        </property>
+
+        <!-- <many-to-one name="item" class="Item" column="ITEM_ID"
+            update="false" insert="false" /> -->
+
+        <!-- here update="false" insert="false", so this will avoid the duplicate
+            update of ITEM_ID foreign key -->
+        <!-- <many-to-one name="item" class="Item" column="ITEM_ID" update="false"
+            insert="false" not-null="true" /> -->
+
+        <!-- cascade option offers transitive persistence and deletion, a feature you can enable
+            to save lines of code and to let hibernate manage the life cycle of associated
+            entity instance automatically -->
+        <many-to-one name="item" class="Item" column="ITEM_ID" not-null="true"
+                     cascade="save-update"/>
+
+    </class>
+
+</hibernate-mapping>
