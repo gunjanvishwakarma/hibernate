@@ -7,7 +7,7 @@
             <generator class="native"></generator>
         </id>
         <property name="name" column="NAME"/>
-        <set name="items" table="CATEGORY_ITEM" cascade="save-update">
+        <set name="items" table="CATEGORY_ITEM" cascade="save-update,delete-orphan">
             <key column="CATEGORY_ID"/>
             <many-to-many class="Item" column="ITEM_ID"/>
         </set>

@@ -9,6 +9,10 @@ public class Category {
     String name;
     Set<Item> items = new HashSet<Item>();
 
+    public Category(){
+
+    }
+
 
     public Category(String name) {
         this.name = name;

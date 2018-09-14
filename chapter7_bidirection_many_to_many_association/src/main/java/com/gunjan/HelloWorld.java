@@ -19,38 +19,42 @@ public class HelloWorld {
      */
     public static void main(String[] args) throws HibernateException {
         SpringApplication.run(HelloWorld.class);
-        Session session = null;
-
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Transaction tx = session.beginTransaction();
+            {
+            Category category = new Category("Book");
+            Set<Item> item = new HashSet<Item>();
+            item.add(new Item("Hibernate"));
+            item.add(new Item("Struts"));
+            category.setItems(item);
+            session.save(category);
+            }
+
+            Item item = new Item("Hibernate");
+            Set<Category> categories = new HashSet<Category>();
+            categories.add(new Category("Book"));
+            categories.add(new Category("Study"));
+            item.setCategories(categories);
+            session.save(item);
+            tx.commit();
+            session.close();
         } catch (HibernateException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-
-        Transaction tx = session.beginTransaction();
-		
-		/*Category category = new Category("Book");
-		Set<Item> item = new HashSet<Item>();
-		item.add(new Item("Hibernate"));
-		item.add(new Item("Struts"));
-		category.setItems(item);
-		session.save(category);*/
-
-
-        Item item = new Item("Hibernate");
-        Set<Category> categories = new HashSet<Category>();
-        categories.add(new Category("Book"));
-        categories.add(new Category("Study"));
-        item.setCategories(categories);
-        session.save(item);
-
-
-        tx.commit();
-        session.close();
-
-
+       try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Transaction tx = session.beginTransaction();
+            //session.delete(session.get(Item.class,1L));
+            session.createQuery("delete from Category").executeUpdate();
+            tx.commit();
+            session.close();
+        } catch (HibernateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }
