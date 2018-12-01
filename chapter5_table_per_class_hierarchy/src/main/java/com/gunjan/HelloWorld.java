@@ -16,7 +16,7 @@ public class HelloWorld {
      * @throws HibernateException
      */
     public static void main(String[] args) throws HibernateException {
-        SpringApplication.run(HEMLogging.class);
+        SpringApplication.run(HelloWorld.class);
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
