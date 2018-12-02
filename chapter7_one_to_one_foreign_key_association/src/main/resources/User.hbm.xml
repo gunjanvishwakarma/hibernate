@@ -18,6 +18,10 @@
 
         <many-to-one name="shippingAddress" class="Address" not-null="true" cascade="all"
                      column="SHIPPING_ADDRESS_ID" unique="true"/>
+        <many-to-one name="homeAddress" class="Address" not-null="true" cascade="all"
+                     column="HOME_ADDRESS_ID" unique="true"/>
+        <many-to-one name="billingAddress" class="Address" not-null="true" cascade="all"
+                     column="BILLING_ADDRESS_ID" unique="true"/>
     </class>
 
 </hibernate-mapping>

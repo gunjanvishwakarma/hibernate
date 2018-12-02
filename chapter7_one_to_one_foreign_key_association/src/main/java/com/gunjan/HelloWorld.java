@@ -29,6 +29,8 @@ public class HelloWorld {
         User user = new User("Bob");
         Address address = new Address("12", "bangalore", "karnataka");
         user.setShippingAddress(address);
+        user.setHomeAddress(address);
+        user.setBillingAddress(address);
         session.save(address);
         session.save(user);
 
