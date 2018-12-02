@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.novell.cve.model"
+                   default-access="field">
+    <class name="CWE" table="zCWE">
+        <id name="cweId" type="string" column="cweId" />
+        <property name="name" column="name" type="string" not-null="false" />
+        <property name="description" column="description" type="string" not-null="false" />
+        <set name="cves" table="CWERef" cascade="save-update">
+            <key column="CWEId" />
+            <many-to-many class="CVE" column="CVEId" />
+        </set>
+
+    </class>
+</hibernate-mapping>

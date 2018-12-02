@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.novell.cve.model"
+                   default-access="field">
+    <class name="CVEProduct" table="zCVEProduct">
+        <id name="cpeURL" type="string" column="cpeURL" />
+        <property name="edition" column="edition" type="string" not-null="false" />
+        <property name="language" column="language" type="string" not-null="false" />
+        <property name="product" column="product" type="string" not-null="false" />
+        <property name="productType" column="productType" type="string" not-null="false" />
+        <property name="swEdition" column="swEdition" type="string" not-null="false" />
+        <property name="targetHw" column="targetHw" type="string" not-null="false" />
+        <property name="targetSw" column="targetSw" type="string" not-null="false" />
+        <property name="update" column="update" type="string" not-null="false" />
+        <property name="vendor" column="vendor" type="string" not-null="false" />
+        <property name="version" column="version" type="string" not-null="false" />
+        <property name="other" column="other" type="string" length="2048" not-null="false" />
+        <set name="cves" table="zCVEProdRef" inverse="true">
+            <key column="CVEProductId" />
+            <many-to-many class="CVE" column="CVEId" />
+        </set>
+    </class>
+</hibernate-mapping>

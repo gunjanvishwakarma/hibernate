@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.novell.cve.model"
+                   default-access="field">
+    <class name="CVE" table="zCVE">
+        <id name="cveId" type="string" column="cveId"/>
+        <property name="cvssScore" column="cvssScore" type="org.hibernate.type.BigDecimalType" not-null="false" />
+        <property name="lastModifiedDateTime" column="lastModifiedDateTime" type="timestamp" not-null="false" />
+        <property name="publishedDateTime" column="publishedDateTime" type="timestamp" not-null="false" />
+        <property name="severity" column="severity" not-null="false">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.novell.cve.sync.Severity</param>
+                <param name="useNamed">false</param>
+            </type>
+        </property>
+        <property name="summary" column="summary" type="text" not-null="false" />
+        <property name="isPresentInZone" column="isPresentInZone" type="boolean" not-null="false" />
+        <property name="vendorList" column="vendorList" type="text" not-null="false" />
+        <bag name="cveReferences" table="zCVEReference">
+            <key column="cveRefId"/>
+            <composite-element class="CVEReference">
+                <property name="reference" column="reference" type="string"/>
+                <property name="source" column="source" type="string"/>
+            </composite-element>
+        </bag>
+        <set name="cveProducts" table="zCVEProdRef" cascade="save-update">
+            <key column="CVEId" />
+            <many-to-many class="CVEProduct" column="CVEProductId" />
+        </set>
+        <set name="cwes" table="CWERef" inverse="true" cascade="save-update">
+            <key column="CVEId" />
+            <many-to-many class="CWE" column="CWEId" />
+        </set>
+    </class>
+</hibernate-mapping>
