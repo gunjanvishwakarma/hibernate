@@ -5,7 +5,7 @@
 >
     <class name="BillingDetails" table="BILLING_DETAILS" abstract="true">
         <id name="id" type="long" column="BILLING_DETAILS_ID">
-            <generator class="hilo"/>
+            <generator class="sequence"/>
         </id>
         <property name="owner" column="OWNER" type="string"/>
         <union-subclass name="CreditCard" table="CREDIT_CARD">

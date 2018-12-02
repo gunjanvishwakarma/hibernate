@@ -1,6 +1,8 @@
 package com.gunjan;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +12,8 @@ import java.util.Set;
 public class Item implements Serializable {
     String name;
     private Long id;
-    // private Collection bids = new ArrayList();
-    private Set bids = new HashSet();
+    private Collection bids = new ArrayList();
+    //private Set bids = new HashSet();
 
     public Item() {
     }
@@ -36,12 +38,11 @@ public class Item implements Serializable {
         this.name = name;
     }
 
-    public Set getBids() {
+    public Collection getBids() {
         return bids;
     }
 
-    public void setBids(Set bids) {
+    public void setBids(Collection bids) {
         this.bids = bids;
     }
-
 }

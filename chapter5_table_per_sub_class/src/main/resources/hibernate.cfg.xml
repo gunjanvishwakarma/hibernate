@@ -18,5 +18,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <mapping resource="BillingDetails.hbm.xml"></mapping>
+        <mapping resource="BankAccount.hbm.xml"></mapping>
+        <mapping resource="CreditCard.hbm.xml"></mapping>
     </session-factory>
 </hibernate-configuration>

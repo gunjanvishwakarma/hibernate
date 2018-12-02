@@ -9,15 +9,15 @@
         </id>
         <property name="name" column="ITEM_NAME" type="string"
                   not-null="true"/>
-        <idbag name="images" table="ITEM_IMAGE">
+        <!--<idbag name="images" table="ITEM_IMAGE">
             <collection-id type="long" column="ITEM_IMAGE_ID">
                 <generator class="increment"></generator>
             </collection-id>
             <key column="ITEM_ID"></key>
             <element type="string" column="FILE_NAME" not-null="true"></element>
-        </idbag>
+        </idbag>-->
         <!-- below is the bag implementation -->
-        <!-- <bag name="images" table="ITEM_IMAGE"> <key column="ITEM_ID"></key>
-            <element type="string" column="FILE_NAME" not-null="true"></element> </bag> -->
+        <bag name="images" table="ITEM_IMAGE"> <key column="ITEM_ID"></key>
+            <element type="string" column="FILE_NAME" not-null="true"></element> </bag>
     </class>
 </hibernate-mapping>
