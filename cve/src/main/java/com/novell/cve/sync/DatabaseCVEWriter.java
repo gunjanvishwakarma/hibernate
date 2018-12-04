@@ -22,6 +22,8 @@ public class DatabaseCVEWriter implements ItemWriter<VulnerabilityType> {
 
     @Override
     public void write(List<? extends VulnerabilityType> items) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
         for (VulnerabilityType vulnerabilityType : items) {
             CVE cve = new CVE();
             cve.setCveId(vulnerabilityType.getCveId());
@@ -71,14 +73,15 @@ public class DatabaseCVEWriter implements ItemWriter<VulnerabilityType> {
             }
 
             cve.setCwes(cwes);
+            session.merge(cve);
+            session.flush();
+            session.clear();
 
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Transaction transaction = session.beginTransaction();
-            session.saveOrUpdate(cve);
-            transaction.commit();
-            session.close();
             System.out.println(cve);
         }
+
+        transaction.commit();
+        session.close();
     }
 
 }
