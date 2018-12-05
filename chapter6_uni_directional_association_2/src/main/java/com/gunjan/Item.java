@@ -9,7 +9,7 @@ public class Item {
     private int id;
     private String name;
 
-    Item() {
+    public Item() {
     }
 
     public Item(String text) {

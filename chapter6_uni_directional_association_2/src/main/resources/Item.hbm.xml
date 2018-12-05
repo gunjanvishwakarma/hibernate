@@ -8,7 +8,7 @@
             <generator class="increment"/>
         </id>
         <property name="name" column="NAME"/>
-        <set name="bids">
+        <set name="bids" cascade="save-update" fetch="subselect">
             <key column="ITEM_ID"></key>
             <one-to-many class="Bid"/>
         </set>
