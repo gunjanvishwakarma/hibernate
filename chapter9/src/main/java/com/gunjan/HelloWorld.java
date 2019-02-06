@@ -63,6 +63,10 @@ public class HelloWorld {
 
         tx2.commit();
         session2.close();
+
+
+        // Automatic Dirty Checking
+        // transparent transaction level write behind
     }
 
 }

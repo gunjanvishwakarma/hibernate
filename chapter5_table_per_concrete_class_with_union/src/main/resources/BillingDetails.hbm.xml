@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping SYSTEM
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.gunjan"
->
+<!-- chapter5_table_per_concrete_class_with_union -->
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gunjan">
     <class name="BillingDetails" table="BILLING_DETAILS" abstract="true">
         <id name="id" type="long" column="BILLING_DETAILS_ID">
             <generator class="sequence"/>
@@ -25,3 +24,21 @@
         </union-subclass>
     </class>
 </hibernate-mapping>
+<!--
+    create table BANK_ACCOUNT (
+        BILLING_DETAILS_ID bigint not null,
+        OWNER varchar(255),
+        ACCOUNT varchar(16),
+        BANKNAME varchar(255),
+        SWIFT varchar(15),
+        primary key (BILLING_DETAILS_ID)
+    )
+    create table CREDIT_CARD (
+        BILLING_DETAILS_ID bigint not null,
+        OWNER varchar(255),
+        NUMBER varchar(16),
+        EXP_MONTH varchar(2),
+        EXP_YEAR varchar(4),
+        primary key (BILLING_DETAILS_ID)
+    )
+-->

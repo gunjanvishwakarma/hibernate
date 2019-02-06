@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- chapter6_collection_of_component -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
@@ -17,6 +18,24 @@
                 <property name="sizeY" column="SIZEY" not-null="true"/>
             </composite-element>
         </set>
-
     </class>
 </hibernate-mapping>
+<!--
+    create table ITEM_C_F_C (
+        ITEM_ID bigint not null,
+        ITEM_NAME varchar(255),
+        primary key (ITEM_ID)
+    )
+    create table ITEM_IMAGE_C_F_C (
+        ITEM_ID bigint not null,
+        IMAGENAME varchar(255) not null,
+        FILENAME varchar(255) not null,
+        SIZEX integer not null,
+        SIZEY integer not null,
+        primary key (ITEM_ID, IMAGENAME, FILENAME, SIZEX, SIZEY)
+    )
+    alter table ITEM_IMAGE_C_F_C
+       add constraint FKl4cm8tje2dnb9gq52wosq8ws5
+       foreign key (ITEM_ID)
+       references ITEM_C_F_C
+-->

@@ -77,7 +77,7 @@ public class DatabaseCVEWriter implements ItemWriter<VulnerabilityType> {
             session.flush();
             session.clear();
 
-            System.out.println(cve);
+            //System.out.println(cve);
         }
 
         transaction.commit();
